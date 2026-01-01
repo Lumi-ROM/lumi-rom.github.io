@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zenith ROM | Changelog</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:slnt,wght@-10..0,100..900&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+    <style>
+        :root {
+            --bg-dark: #0a0b10;
+            --bg-card: #161822;
+            --accent: #7c4dff;
+            --text-main: #ffffff;
+            --text-muted: #a0a0a0;
+            --font-body: 'Inter', sans-serif;
+            --font-header: 'Orbitron', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            margin: 0;
+            padding: 60px 20px;
+            line-height: 1.6;
+        }
+
+        .container { max-width: 850px; margin: 0 auto; }
+
+        .header-section { margin-bottom: 60px; text-align: left; }
+        
+        h1 { 
+            font-family: var(--font-header); 
+            font-size: 3rem; 
+            margin: 0; 
+            background: linear-gradient(to right, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Timeline Logic */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2px;
+            height: 0%; /* Animated */
+            background: linear-gradient(to bottom, var(--accent), transparent);
+        }
+
+        .version-node {
+            position: relative;
+            margin-bottom: 80px;
+            opacity: 0; /* Animated */
+        }
+
+        .version-node::before {
+            content: '';
+            position: absolute;
+            left: -46px;
+            top: 10px;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 15px var(--accent);
+        }
+
+        .v-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .v-number {
+            font-family: var(--font-header);
+            font-size: 1.8rem;
+            color: var(--text-main);
+        }
+
+        .v-badge {
+            font-size: 0.7rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .badge-latest { background: var(--accent); color: white; }
+        .badge-alpha { background: #333; color: #a0a0a0; border: 1px solid #444; }
+
+        .change-card {
+            background: var(--bg-card);
+            border-radius: 24px;
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        ul { list-style: none; padding: 0; margin: 0; }
+        
+        li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            display: flex;
+            align-items: flex-start;
+            font-weight: 400;
+            color: #d1d1d1;
+        }
+
+        li span.tag {
+            font-weight: 800;
+            font-size: 0.7rem;
+            margin-right: 15px;
+            text-transform: uppercase;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .tag-sys { color: #bb86fc; background: rgba(187, 134, 252, 0.1); }
+        .tag-fix { color: #cf6679; background: rgba(207, 102, 121, 0.1); }
+        .tag-ai { color: #03dac6; background: rgba(3, 218, 198, 0.1); }
+
+        .erofs-info {
+            background: rgba(124, 77, 255, 0.05);
+            padding: 15px;
+            border-left: 3px solid var(--accent);
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            border-radius: 0 12px 12px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header-section">
+            <h1>System Updates</h1>
+            <p style="color: var(--text-muted)">Tracking the changes of LumiROM for A32 4G</p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-line"></div>
+
+            <div class="version-node">
+                <div class="v-header">
+                    <span class="v-number">v8.3.1</span>
+                    <span class="v-badge badge-latest">Latest Build</span>
+                </div>
+                <div class="change-card">
+                    <div class="erofs-info">
+                        <strong>EroFS Conversion:</strong> Product, system_ext, odm, and vendor partitions converted. 
+                        Includes new EroFS kernel for A32 and A22.
+                    </div>
+                    <ul>
+                        <li><span class="tag tag-sys">Patch</span> December Security Patch</li>
+                        <li><span class="tag tag-sys">System</span> Removed FRP (Factory Reset Protection)</li>
+                        <li><span class="tag tag-ai">AI</span> Added AI Weather on Lock screen</li>
+                        <li><span class="tag tag-ai">AI</span> Added AI Wallpaper</li>
+                        <li><span class="tag tag-sys">UI</span> Added new specialized settings</li>
+                        <li><span class="tag tag-fix">Fix</span> Fixed clock selection on lockscreen</li>
+                        <li><span class="tag tag-fix">Fix</span> Fixed recent calls on phone app</li>
+                        <li><span class="tag tag-fix">Fix</span> Fixed Studio app crashes</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="version-node">
+                <div class="v-header">
+                    <span class="v-number">v8.2.5</span>
+                    <span class="v-badge badge-alpha">Alpha Build</span>
+                </div>
+                <div class="change-card">
+                    <ul>
+                        <li><span class="tag tag-sys">Biometrics</span> FOD (Fingerprint On Display) Initial Support</li>
+                        <li><span class="tag tag-ai">AI</span> Galaxy AI Features Integration</li>
+                        <li><span class="tag tag-sys">Core</span> NFC Support enabled</li>
+                        <li><span class="tag tag-sys">Core</span> Basic features (Wi-Fi, Bluetooth, etc.)</li>
+                        <li><span class="tag tag-sys">Status</span> Official Boot Success</li>
+                        <li><span class="tag tag-fix">Fix</span> Lag on security settings</li>
+                        <li><span class="tag tag-fix">Fix</span> System sound and SSRM warning removed</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tl = anime.timeline({
+                easing: 'easeOutQuart'
+            });
+
+            tl
+            // 1. Animate the line growth
+            .add({
+                targets: '.timeline-line',
+                height: '100%',
+                duration: 1500
+            })
+            // 2. Pop the nodes in
+            .add({
+                targets: '.version-node',
+                opacity: [0, 1],
+                translateX: [20, 0],
+                delay: anime.stagger(300),
+                duration: 800
+            }, '-=1000')
+            // 3. Subtle float animation for the latest card
+            .add({
+                targets: '.badge-latest',
+                translateY: [0, -5, 0],
+                loop: true,
+                duration: 2000,
+                easing: 'easeInOutQuad'
+            });
+        });
+    </script>
+</body>
+</html>
